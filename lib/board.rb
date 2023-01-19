@@ -19,4 +19,18 @@ class Board
 end
 
 board = Board.new
-board.display
+
+# Test case 1:
+start_pos = [0, 0]
+end_pos = [7, 7]
+path, num_of_moves = board.knight.shortest_path(start_pos, end_pos)
+puts "Shortest path: #{path}"
+puts "Number of moves: #{num_of_moves}"
+
+# Test case 2:
+start_pos = [3, 3]
+end_pos = [0, 0]
+path, num_of_moves = board.knight.shortest_path(start_pos, end_pos)
+puts "Shortest path: #{path}"
+puts "Number of moves: #{num_of_moves}"
+

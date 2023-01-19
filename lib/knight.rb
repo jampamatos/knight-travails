@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'set'
+
 class Knight
   attr_accessor :knight_position, :knight_path, :board
 
@@ -22,43 +24,21 @@ class Knight
   end
 
   def shortest_path(start_pos, end_pos)
-    # Create a queue of positions to process, starting with the initial position
-    positions_queue = [start_pos]
-    # Create a hash to store the number of moves it took to reach each position
-    processed_positions = {}
-    # Initialize a variable to keep track of the number of moves taken
-    num_of_moves = 0
-    # Initialize an array to store the path taken to reach the end position
-    path = [start_pos]
+    queue = [[start_pos, [start_pos], 0]]
+    visited = Set[start_pos]
+    until queue.empty?
+      current_pos, path, num_of_moves = queue.shift
+      return path, num_of_moves if current_pos == end_pos
 
-    # Keep looping until there are no more positions in the queue to process
-    until positions_queue.empty?
-      # Dequeue the next position to process
-      current_position = positions_queue.shift
-
-      # Generate all possible "L" shaped moves from this position
-      possible_moves = find_possible_moves(current_position)
-
-      # Iterate through the possible moves
+      possible_moves = find_possible_moves(current_pos)
       possible_moves.each do |move|
-        # If this position has not been processed yet
-        unless processed_positions.has_key?(move)
-          # Enqueue the position to be processed
-          positions_queue << move
-          # Record the number of moves it took to reach this position
-          processed_positions[move] = num_of_moves + 1
-          # Add this position to the path
-          path << move
-        end
-        # If this move is the end position
-        if move == end_pos
-          # Return the path and the number of moves
-          return path, num_of_moves
+        unless visited.include?(move)
+          visited.add(move)
+          queue << [move, path + [move], num_of_moves + 1]
         end
       end
-      # Increase the number of moves taken
-      num_of_moves += 1
     end
+    [nil, nil]
   end
 
   def find_possible_moves(position)

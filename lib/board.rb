@@ -10,11 +10,11 @@ class Board
   def initialize
     @dimensions = Array.new(8) { Array.new(8, 0) }
     @knight = Knight.new
+    #knight.board = self
   end
 
-  def valid_position?(position)
-    x, y = position
-    x.between?(0, 7) && y.between?(0, 7)
+  def move_knight_to(position)
+    @knight.move_to(position)
   end
 end
 

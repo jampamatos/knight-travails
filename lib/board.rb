@@ -1,15 +1,15 @@
 # frozen_string_literal: true
 
 require_relative 'modules/chess_board_display'
+require_relative 'knight'
 
 class Board
   include ChessBoardDisplay
-  attr_accessor :dimensions, :knight_position, :knight_path
+  attr_accessor :dimensions, :knight
 
   def initialize
     @dimensions = Array.new(8) { Array.new(8, 0) }
-    @knight_position = []
-    @knight_path = []
+    @knight = Knight.new
   end
 
   def valid_position?(position)

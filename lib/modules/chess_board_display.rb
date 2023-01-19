@@ -20,7 +20,7 @@ module ChessBoardDisplay
   private
 
   def print_cell(x, y, board)
-    if board.knight_position[0] == x && board.knight_position[1] == y
+    if board.knight.knight_position[0] == x && board.knight.knight_position[1] == y
       print '♞  '
     elsif (x + y).even?
       print '⬜ '

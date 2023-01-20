@@ -7,7 +7,7 @@
 # and prints the chess board on the console with the knight's position.
 module ChessBoardDisplay
   def display(board = self)
-    puts '   A  B   C  D   E  F   G  H'
+    puts '   A  B  C  D  E  F  G  H'
     8.times do |x|
       print "#{x+1} "
       8.times do |y|
@@ -21,7 +21,7 @@ module ChessBoardDisplay
 
   def print_cell(x, y, board)
     if board.knight.knight_position[0] == x && board.knight.knight_position[1] == y
-      print '♞  '
+      print ' ♞ '
     elsif (x + y).even?
       print '⬜ '
     else

@@ -6,6 +6,7 @@ require_relative 'lib/board'
 welcome_msg
 input = start_game
 loop do
+  break unless input
   board = Board.new if input
   clear_screen
   board.display

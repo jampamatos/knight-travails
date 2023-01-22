@@ -20,16 +20,9 @@ def welcome_msg
   puts 'Its basic move is two steps forward and one step to the side.'
   puts 'It can face any direction.'
   puts ''
-  puts "The game is a simulation of a knight's movement on a chessboard."
-  puts 'You will be prompted to select a starting position and an ending' 
-  puts 'position for the knight on the board.'
-  puts ''
-  puts 'The game will then use a shortest path algorithm to determine the'
+  puts 'The game will uses a shortest path algorithm to determine the'
   puts 'minimum number of moves the knight must make to reach the end'
   puts 'position from the start position.'
-  puts ''
-  puts 'The game will also display the sequence of moves the knight'
-  puts 'makes to reach the end position.'
   puts ''
   puts "It's a fun and interactive way to visualize the unique"
   puts 'movement of the knight piece in chess and the many'
